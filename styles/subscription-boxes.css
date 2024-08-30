@@ -1,0 +1,52 @@
+.title-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center vertically */
+}
+.title-container h1 {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30pt;
+    margin-top: 80px;
+    font-weight: 300;
+}
+.title-container p {
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ font-weight: 300;
+}
+.product-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* Space between the boxes */
+    padding: 20px;
+}
+.product{
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+   /* Image styling */
+   .product img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for the zoom effect */
+}
+
+.product img:hover {
+    transform: scale(0.9); /* Zoom out effect */
+}
+
+
+/* Name styling */
+.product .name {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+/* Price styling */
+.product .price {
+    font-size: 1em;
+    color: #888;
+}

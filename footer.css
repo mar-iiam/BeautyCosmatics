@@ -1,0 +1,100 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FC8947;
+}
+.shop{
+    position: relative;
+    left: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 40px;
+}
+.shop h4{
+    font-size: 30px;
+}
+.shop a{
+    text-decoration: none;
+    color: black;
+}
+.search{
+    position: relative;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.search h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    font-weight: 300;
+}
+.search p{
+    text-align: center;
+}
+.search-container {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Search bar styling */
+.search-bar {
+    flex: 1; /* Makes the search bar take up all available space */
+    padding: 10px;
+    border: 3px solid #000000;
+    font-size: 16px;
+}
+
+/* Search button styling */
+.search-button {
+    padding: 10px 20px;
+    border: 3px solid #000000;
+    border-left: 0; /* Removes border between search bar and button */
+    background-color: #000000;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #FC8947;
+}
+
+/* Social media icons container */
+.social-media {
+    display: flex;
+    gap: 10px; /* Space between icons */
+    margin-top: 20px; /* Space above the social media icons */
+    position: relative;
+    left: 20%;
+}
+
+/* Common styles for social media icons */
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Size of the icon */
+    height: 40px; /* Size of the icon */
+    border-radius: 50%; /* Make icons circular */
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 20px; /* Font size for icon */
+    transition: background-color 0.3s ease;
+}
+.contact{
+    position: relative;
+    left: -10%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 40px;
+}
+.contact h4{
+    font-size: 30px;
+}
+
