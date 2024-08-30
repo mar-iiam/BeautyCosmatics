@@ -1,33 +1,30 @@
-// navbar.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const navbarPlaceholder = document.getElementById('navbar-placeholder');
 
     // Check if the placeholder exists
-    if (!navbarPlaceholder) {
+    if (navbarPlaceholder) {
+        // Fetch the navbar HTML
+        fetch('../navbar.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                navbarPlaceholder.innerHTML = data;
+                // Initialize the nav links and set active link based on current page
+                initializeNavLinks();
+            })
+            .catch(error => {
+                console.error('Error loading the navbar:', error);
+            });
+    } else {
         console.error('Navbar placeholder not found');
-        return;
+        initializeNavLinks(); // Initialize nav links in case the navbar is already in the HTML
     }
-
-    // Fetch the navbar HTML
-    fetch('navbar.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(data => {
-            navbarPlaceholder.innerHTML = data;
-            // Re-initialize event listeners after inserting the navbar
-            initializeNavLinks();
-        })
-        .catch(error => {
-            console.error('Error loading the navbar:', error);
-        });
 });
 
-// Function to initialize nav link event listeners
 function initializeNavLinks() {
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -39,17 +36,16 @@ function initializeNavLinks() {
     // Add event listeners to each link
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            // Remove 'active' class from all links
             removeActiveClass();
-            // Add 'active' class to the clicked link
             this.classList.add('active');
         });
     });
 
-    // Optional: Handle click outside to remove 'active' state
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.navbar')) {
-            removeActiveClass();
+    // Automatically add 'active' class to the link corresponding to the current page
+    const currentPath = window.location.pathname.split('/').pop(); // Get the current page name
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
         }
     });
 }
