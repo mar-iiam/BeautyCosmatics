@@ -50,3 +50,20 @@
     font-size: 1em;
     color: #888;
 }
+
+@media (max-width:425px) {
+    .product-grid{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* 2 columns */
+        gap: 20px; /* Space between the boxes */
+        padding: 20px;
+    }
+}
+@media (max-width:375px) {
+    .title-container h1 {
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 20pt;
+        margin-top: 80px;
+        font-weight: 300;
+    }
+}
