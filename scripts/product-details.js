@@ -112,6 +112,16 @@ document.querySelector('.right-content').innerHTML = `
 // Function to update the price display
 const updatePriceDisplay = (newPrice) => {
     document.getElementById('price-display').textContent = `$${newPrice.toFixed(2)}`;
+    document.getElementById('add-to-cart').addEventListener('click', () => {
+        const name = decodeURIComponent(params.get('name'));
+        const imageSrc = decodeURIComponent(params.get('imageSrc'));
+        const price = parseFloat(document.querySelector('input[name="options"]:checked').value);
+        addToCart(name, imageSrc, price);
+        
+
+
+
+    });
 };
 
 // Add event listeners to radio buttons to update the price when selected
@@ -191,3 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
         sentences[0].click(); // Trigger a click on the first sentence by default
     }
 });
+
+document.querySelector('.checkout-btn').addEventListener('click', function() {
+    window.location.href = '../pages/cart.html'; // Replace 'cart.html' with the actual path to your cart page
+});
+

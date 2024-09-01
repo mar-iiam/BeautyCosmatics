@@ -1,0 +1,101 @@
+/* Container for the cart sidebar */
+#cart-sidebar {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -4px; /* Hidden to the right by default */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    padding: 20px;
+}
+
+/* Show the cart when active */
+.cart-sidebar .active {
+    right: 0;
+}
+
+/* Close button inside the cart */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 50%;
+}
+
+/* Cart item styling */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.cart-item p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Price styling */
+.cart-item p:nth-child(3) {
+    margin-left: auto;
+    font-weight: bold;
+}
+
+/* Empty cart message */
+.cart-empty {
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+    margin-top: 50px;
+}
+
+/* Checkout button */
+.checkout-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.cart-sidebar .checkout-btn:hover {
+    background-color: #218c4d;
+}
+/* Default state: Sidebar is hidden */
+
+.cart-container {
+    margin-top: 50px; /* Adjust according to your layout */
+}
+.cart-title{
+    display: flex;
+    justify-content: space-around;
+    background-color: #FC8947;
+}
+.quantity-controls{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

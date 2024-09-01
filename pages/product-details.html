@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../navbar.css">
     <link rel="stylesheet" href="../footer.css">
     <link rel="stylesheet" href="../styles/product.css">
+    <link rel="stylesheet" href="../styles/cart.css">
 </head>
 <body>
     <div id="navbar-placeholder"></div>
@@ -53,9 +54,24 @@
            
         </div>
     </div>
+    <div id="cart-sidebar">
+        <div class="cart-title">
+            <button class="close-btn">&times;</button>
+            <h1>Cart</h1>
+        </div>
+       
+        <div class="cart-container">
+            <!-- Cart items will be dynamically added here by JS -->
+        </div>
+        <hr>
+        <button class="checkout-btn"> View cart</button>
+    </div>
+    
+    
     <div id="footer-placeholder"></div>
    <script src="../scripts/product-details.js"></script>
    <script src="../navbar.js"></script>
    <script src="../footer.js"></script>
+   <script src="../scripts/cart.js"></script>
 </body>
 </html>
