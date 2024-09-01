@@ -86,7 +86,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    left: 120px;
+    left: 170px;
 }
 .upper-content h2{
     margin-bottom: -2px;
@@ -141,29 +141,75 @@
     display: flex;
     flex-direction: column;
 }
+.right-content p:nth-child(2){
+    margin-bottom: -16px;
+}
 .option-box {
     flex: 1; /* Make boxes equal width */
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
+    border: 1px solid #a1a0a0;
+    background-color: #ffffff;
     transition: background-color 0.3s, border-color 0.3s;
     display: flex;
     align-items: center;
     margin: 20px;
     position: relative;
     right: 28px;
+    width :250px;
 }
-
+.option-label{
+    padding-left: 5px;
+    display: flex;
+    flex-direction: column;
+    line-height: 0.7;
+}
 .option-box input[type="radio"] {
     margin-right: 10px; /* Space between radio button and label */
 }
 
 .option-box input[type="radio"]:checked + label {
     font-weight: bold;
-    color: #007bff;
+    color: #000000;
 }
 
 .option-box:hover {
     background-color: #e0e0e0;
 }
+#buttons-container{
+    flex-direction: column;
+    position: relative;
+    right: 10px;
+    width: 275px;
+    height: 120px;
+}
+#buttons-container button{
+    height: 45px;
+    margin-bottom: 10px;
+    border: 2px solid #000000;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+#buttons-container button:first-child{
+   background-color: black;
+   color: white;
+}
+#buttons-container button:first-child:hover{
+
+    background-color: rgb(73, 72, 72);
+    color: white;
+ }
+ #subscription-container{
+    position: relative;
+    right: 10px;
+    height: 45px;
+    width: 400px;
+ }
+ #subscription{
+    height: 45px;
+    width: 275px;
+    margin-bottom: 10px;
+    border: 2px solid #000000;
+    transition: background-color 0.3s, border-color 0.3s;
+ }
+ #subscription:hover{
+  color: #5e5c5c;
+ }

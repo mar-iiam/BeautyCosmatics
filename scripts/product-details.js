@@ -71,26 +71,70 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Populate the product content sections
     document.querySelector('.upper-content').innerHTML = `
-        <h2>${decodeURIComponent(name)}</h2>
-        <span> SKU :${decodeURIComponent(sku)}</span>
-        <p>${decodeURIComponent(description)}</p>
-    `;
-    const numericPrice = parseFloat(price.replace(/[^0-9.]/g, ''));
-    document.querySelector('.right-content').innerHTML = `
-        <p>Price: ${decodeURIComponent(price)}</p>
-             <div class="option-box">
-            <input type="radio" id="option1" name="options" value="Option 1">
-            <label for="option1"> One time Purchase $${numericPrice + 10}</label>
+    <h2>${decodeURIComponent(name)}</h2>
+    <span> SKU :${decodeURIComponent(sku)}</span>
+    <p>${decodeURIComponent(description)}</p>
+`;
+const numericPrice = parseFloat(price.replace(/[^0-9.]/g, ''));
+document.querySelector('.right-content').innerHTML = `
+    <p>Price: <span id="price-display">${decodeURIComponent(price)}</span></p>
+    <p>Price options </p>
+    <div class="option-box">
+        <input type="radio" id="option1" name="options" value="${numericPrice + 10}">
+        <div class="option-label">
+            <p>One Time purchase</p>
+            <label for="option1">$${numericPrice + 10}</label>
         </div>
-        <div class="option-box">
-            <input type="radio" id="option2" name="options" value="Option 2">
-            <label for="option2">3 Months $${numericPrice + 20}</label>
+    </div>
+    <div class="option-box">
+        <input type="radio" id="option2" name="options" value="${numericPrice + 20}">
+        <div class="option-label">
+            <p>3 Months</p>
+            <label for="option2">$${numericPrice + 20}</label>
         </div>
-        <div class="option-box">
-            <input type="radio" id="option3" name="options" value="Option 3">
-            <label for="option3">6 Months $${numericPrice + 30}</label>
+    </div>
+    <div class="option-box">
+        <input type="radio" id="option3" name="options" value="${numericPrice + 30}">
+        <div class="option-label">
+            <p>6 Months</p>
+            <label for="option3">$${numericPrice + 30}</label>
         </div>
-    `;
+    </div>
+     <div id="subscription-container" style="display: none;">
+        <button id="subscription">Subscription</button>
+    </div>
+    <div id="buttons-container" style="display: none;">
+        <button id="add-to-cart">Add to Cart</button>
+        <button id="buy-now">Buy Now</button>
+    </div>
+`;
+
+// Function to update the price display
+const updatePriceDisplay = (newPrice) => {
+    document.getElementById('price-display').textContent = `$${newPrice.toFixed(2)}`;
+};
+
+// Add event listeners to radio buttons to update the price when selected
+document.querySelectorAll('input[name="options"]').forEach((radio) => {
+    radio.addEventListener('change', (event) => {
+        updatePriceDisplay(parseFloat(event.target.value));
+
+        // Show buttons if the first option is selected
+        const buttonsContainer = document.getElementById('buttons-container');
+        if (event.target.id === 'option1') {
+            buttonsContainer.style.display = 'flex';
+        } else {
+            buttonsContainer.style.display = 'none';
+        }
+        const subscriptionButton = document.getElementById('subscription-container');
+        if(event.target.id==='option2' || event.target.id==='option3'){
+          subscriptionButton.style.display = 'flex';
+        }else {
+            subscriptionButton.style.display = 'none';
+        }
+    });
+});
+
 
     const nameLink = document.querySelector('.navigation .main-pages a:nth-child(3)');
     nameLink.textContent = decodeURIComponent(name);
