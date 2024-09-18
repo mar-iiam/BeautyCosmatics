@@ -1,14 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const cartSidebar = document.querySelector('.cart-sidebar');
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const closeCartButton = document.querySelector('.close-btn');
-   console.log(addToCartButtons)
-    // Function to open the cart sidebar
-
+   
     // Function to close the cart sidebar
     function closeCart() {
-       const cartview = document.getElementById('cart-sidebar');
-        cartview.style.display = 'none'
+        const cartview = document.getElementById('cart-sidebar');
+        cartview.style.display = 'none';
     }
     
     // Add click event listener to the close button
@@ -73,6 +70,12 @@ function displayCart() {
                     <div class="item-total">
                         <p>Total: $${itemTotal.toFixed(2)}</p>
                     </div>
+                   <div class="remove-item">
+    <button class="delete" data-index="${index}">
+        <i class="fas fa-trash"></i>
+    </button>
+</div>
+
                 </div>
             `;
         }).join('');
@@ -80,7 +83,7 @@ function displayCart() {
         // Add a summary section at the end of the cart
         cartContainer.innerHTML += `
             <div class="cart-summary">
-                <h3>Total Amount: $${totalAmount.toFixed(2)}</h3>
+                <h3>SubTotal Amount: $${totalAmount.toFixed(2)}</h3>
             </div>
         `;
     } else {
@@ -96,6 +99,11 @@ function displayCart() {
     document.querySelectorAll('.decrement').forEach(button => {
         button.removeEventListener('click', decrementHandler);
         button.addEventListener('click', decrementHandler);
+    });
+
+    document.querySelectorAll('.delete').forEach(button => {
+        button.removeEventListener('click', deleteHandler);
+        button.addEventListener('click', deleteHandler);
     });
 
     // Increment handler function
@@ -115,4 +123,28 @@ function displayCart() {
             displayCart(); // Refresh the cart display
         }
     }
+
+    // Delete handler function
+    function deleteHandler() {
+        const index = this.dataset.index;
+        cart.splice(index, 1); // Remove the item from the cart
+        localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        displayCart(); // Refresh the cart display
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const contentDiv = document.getElementById('Total_price');
+    
+            // Create a new <p> element
+            const newParagraph = document.createElement('p');
+    
+            // Set the content of the paragraph
+            newParagraph.textContent = 'Total'+totalAmount;
+    
+            // Append the new paragraph to the target div
+            contentDiv.appendChild(newParagraph);
+    });
+
 }
+
+
+

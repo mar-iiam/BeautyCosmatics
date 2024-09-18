@@ -213,3 +213,33 @@
  #subscription:hover{
   color: #5e5c5c;
  }
+
+ .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    height: 200px;
+}
+.modal-content h2{
+  margin: 35px;
+}
+
+#close-checkout-modal{
+    height: 35px;
+    width: 100px;
+    color: white;
+    background-color: black;
+}

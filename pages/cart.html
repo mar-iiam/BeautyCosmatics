@@ -3,9 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cart</title>
+    <link rel="stylesheet" href="../navbar.css">
+    <link rel="stylesheet" href="../footer.css">
+    <link rel="stylesheet" href="../styles//cart-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
-    <p>hello</p>
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+    
+    <div class="cart">
+        <h1>My Cart</h1>
+        <hr>
+    <div class="cart-container">
+        <!-- Cart items will be dynamically inserted here -->
+    </div>
+    <div class="info">
+        <p><i class="fa-solid fa-tag"></i> Enter a promo code</p>
+        <p><i class="fa-regular fa-clipboard"></i> Add a Note</p>
+        <a href="#" id="estimated-delivery-link">Estimated Delivery</a>
+        <hr>
+     <div id="Total_price"></div>
+    </div>
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <h2>Select Your Destination</h2>
+            <select id="country-dropdown">
+                <option value="">Select a country</option>
+                <option value="usa">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="canada">Canada</option>
+                <!-- Add more countries as needed -->
+            </select>
+            <button id="close-modal">Choose</button>
+        </div>
+    </div>
+    <p id="selected-country"></p>
+    <button id="checkout-button">Proceed to Checkout</button>
+    <!-- Modal for the checkout message -->
+<div class="modal-overlay" id="checkout-modal-overlay" style="display:none;">
+    <div class="modal-content">
+        <h2>We can't accept online orders right now</h2>
+        <p>Please contact us to complete your purchase.</p>
+        <button id="close-checkout-modal">Got it</button>
+    </div>
+</div>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Load JS Files -->
+    <script src="../navbar.js"></script>
+    <script src="../footer.js"></script>
+    <script src="../scripts/cart.js"></script>
+
+    <script>
+        // Initialize the cart on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayCart(); // Load the cart with any existing items
+
+            // Attach event listeners to "Add to Cart" buttons (if any exist on the page)
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const name = this.dataset.name;
+                    const imageSrc = this.dataset.imageSrc;
+                    const price = parseFloat(this.dataset.price);
+
+                    addToCart(name, imageSrc, price);
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const promoParagraph = document.querySelector('.info p');
+    
+    promoParagraph.addEventListener('click', function() {
+        let inputField = document.querySelector('.promo-input');
+        let addButton = document.querySelector('.promo-button');
+        
+        if (!inputField) {
+            // If the input field doesn't exist, create and insert it
+            inputField = document.createElement('input');
+            inputField.type = 'text';
+            inputField.placeholder = 'Enter your promo code';
+            inputField.className = 'promo-input';
+
+            // Create the "Add" button
+            addButton = document.createElement('button');
+            addButton.textContent = 'Add';
+            addButton.className = 'promo-button';
+
+            // Create a container to hold both elements
+            const container = document.createElement('div');
+            container.className = 'promo-container';
+            container.appendChild(inputField);
+            container.appendChild(addButton);
+
+            // Insert the container after the paragraph
+            promoParagraph.insertAdjacentElement('afterend', container);
+        } else {
+            // If the input field exists, remove both the input field and the button
+            inputField.parentNode.remove();
+        }
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const promoParagraph = document.querySelector('.info p:nth-of-type(2)');
+
+    promoParagraph.addEventListener('click', function() {
+        let inputField = document.querySelector('.note-input');
+
+        if (!inputField) {
+            // If the input field doesn't exist, create and insert it
+            inputField = document.createElement('input');
+            inputField.type = 'text';
+            inputField.placeholder = 'Additional information.......';
+            inputField.className = 'note-input';
+
+            // Create a container to hold both elements
+            const container = document.createElement('div');
+            container.className = 'promo-container';
+            container.appendChild(inputField);
+
+            // Insert the container after the paragraph
+            promoParagraph.insertAdjacentElement('afterend', container);
+        } else {
+            // If the input field exists, remove both the input field and the button
+            inputField.parentNode.remove();
+        }
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const modalOverlay = document.getElementById('modal-overlay');
+    const estimatedDeliveryLink = document.getElementById('estimated-delivery-link');
+    const closeModalButton = document.getElementById('close-modal');
+    const countryDropdown = document.getElementById('country-dropdown');
+    const selectedCountryDisplay = document.getElementById('selected-country'); // Element to display the selected country
+
+    // Function to open the modal
+    function openModal() {
+        modalOverlay.style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modalOverlay.style.display = 'none';
+    }
+
+    // Function to render the selected country
+    function renderSelectedCountry() {
+        const selectedValue = countryDropdown.value;
+        if (selectedValue) {
+            selectedCountryDisplay.textContent = `Selected Country: ${countryDropdown.options[countryDropdown.selectedIndex].text}`;
+        } else {
+            selectedCountryDisplay.textContent = 'No country selected.';
+        }
+    }
+
+    // Add click event listener to the Estimated Delivery link
+    estimatedDeliveryLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        openModal();
+    });
+
+    // Add click event listener to the Choose button
+    closeModalButton.addEventListener('click', function() {
+        renderSelectedCountry();
+        closeModal();
+    });
+
+    // Close the modal if the overlay is clicked
+    modalOverlay.addEventListener('click', function(event) {
+        if (event.target === modalOverlay) {
+            closeModal();
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const checkoutButton = document.getElementById('checkout-button');
+    const checkoutModalOverlay = document.getElementById('checkout-modal-overlay');
+    const closeCheckoutModalButton = document.getElementById('close-checkout-modal');
+
+    // Function to open the modal
+    function openCheckoutModal() {
+        checkoutModalOverlay.style.display = 'flex'; // Show the modal
+    }
+
+    // Function to close the modal
+    function closeCheckoutModal() {
+        checkoutModalOverlay.style.display = 'none'; // Hide the modal
+    }
+
+    // Add click event listener to the checkout button
+    checkoutButton.addEventListener('click', function() {
+        openCheckoutModal();
+    });
+
+    // Add click event listener to the "Got it" button
+    closeCheckoutModalButton.addEventListener('click', function() {
+        closeCheckoutModal();
+    });
+
+    // Close the modal if the overlay is clicked
+    checkoutModalOverlay.addEventListener('click', function(event) {
+        if (event.target === checkoutModalOverlay) {
+            closeCheckoutModal();
+        }
+    });
+});
+
+
+
+    </script>
 </body>
 </html>

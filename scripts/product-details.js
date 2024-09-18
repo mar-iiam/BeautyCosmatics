@@ -206,3 +206,36 @@ document.querySelector('.checkout-btn').addEventListener('click', function() {
     window.location.href = '../pages/cart.html'; // Replace 'cart.html' with the actual path to your cart page
 });
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const checkoutButton = document.getElementById('subscription');
+    const checkoutModalOverlay = document.getElementById('checkout-modal-overlay');
+    const closeCheckoutModalButton = document.getElementById('close-checkout-modal');
+
+    // Function to open the modal
+    function openCheckoutModal() {
+        checkoutModalOverlay.style.display = 'flex'; // Show the modal
+    }
+
+    // Function to close the modal
+    function closeCheckoutModal() {
+        checkoutModalOverlay.style.display = 'none'; // Hide the modal
+    }
+
+    // Add click event listener to the checkout button
+    checkoutButton.addEventListener('click', function() {
+        openCheckoutModal();
+    });
+
+    // Add click event listener to the "Got it" button
+    closeCheckoutModalButton.addEventListener('click', function() {
+        closeCheckoutModal();
+    });
+
+    // Close the modal if the overlay is clicked
+    checkoutModalOverlay.addEventListener('click', function(event) {
+        if (event.target === checkoutModalOverlay) {
+            closeCheckoutModal();
+        }
+    });
+});
