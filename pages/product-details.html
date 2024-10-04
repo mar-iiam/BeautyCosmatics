@@ -12,73 +12,99 @@
 
 </head>
 <body>
-    <div id="navbar-placeholder"></div>
-    <div class="navigation">
-        <div class="main-pages">
-            <a href="index.html">Home \</a>
-            <a href="subscription-boxes.html">subscription boxes \</a>
-            <a href="#">name</a>
+    <header id="navbar-placeholder"></header>
+    <main>
+       <section>
+        <div class="navigation">
+            <div class="main-pages">
+                <a href="index.html">Home \</a>
+                <a href="subscription-boxes.html">subscription boxes \</a>
+                <a href="#">name</a>
+            </div>
+            <div class="controllers">
+                <a href="#"> < pre </a>
+                <a href="#">|</a>
+                <a href="#"> next > </a>
+            </div>
         </div>
-        <div class="controllers">
-            <a href="#"> < pre </a>
-            <a href="#">|</a>
-            <a href="#"> next > </a>
+       </section>
+       <section>
+        <div class="product-details">
+            <div class="slideshow-container">
+                <div class="main-image">
+                    <!-- Main image will be displayed here -->
+                </div>
+                <div class="thumbnail-images">
+                    <!-- Thumbnail images will be displayed here -->
+                </div>
+            </div>
+        </div>
+       </section>
+       <section>
+        <div class="product-content">
+          <aside>
+            <div class="left-content">
+                <div class="upper-content"></div>
+                <div class="lower-part">
+                  <div class="sentence-container">
+                      <div class="sentence" data-paragraph="para1">PRODUCT INFO</div>
+                      <div class="sentence" data-paragraph="para2">RETURN & REFUND POLICY </div>
+                      <div class="sentence" data-paragraph="para3">SHIPPING INFO</div>
+                  </div>
+                  <div class="paragraph-container">
+                     <article>
+                        <p id="para1" class="hidden">This is the paragraph related to Sentence 1. This is the paragraph related to Sentence 1.This is the paragraph related to Sentence 1.This is the paragraph related to Sentence 1.</p>
+                     </article>
+                     <article>
+                        <p id="para2" class="hidden">This is the paragraph related to Sentence 2.</p>
+                     </article>
+                     <article>
+                        <p id="para3" class="hidden">This is the paragraph related to Sentence 3.</p>
+                     </article>
+                  </div>
+                </div>
+              </div>
+          </aside>
+           <aside>
+            <div class="right-content">
+           </aside>
+              
+               
+            </div>
+        </div>
+       </section>
+    <section>
+                <!-- Modal for the checkout message -->
+    <div class="modal-overlay" id="checkout-modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <h2>We can't accept online orders right now</h2>
+            <p>Please contact us to complete your purchase.</p>
+            <button id="close-checkout-modal">Got it</button>
         </div>
     </div>
-    <div class="product-details">
-        <div class="slideshow-container">
-            <div class="main-image">
-                <!-- Main image will be displayed here -->
+    </section>
+    
+    </main>
+
+    <aside>
+        
+        <div id="cart-sidebar">
+          <header>
+            <div class="cart-title">
+                <button class="close-btn">&times;</button>
+                <h1>Cart</h1>
             </div>
-            <div class="thumbnail-images">
-                <!-- Thumbnail images will be displayed here -->
-            </div>
-        </div>
-    </div>
-    <div class="product-content">
-        <div class="left-content">
-          <div class="upper-content"></div>
-          <div class="lower-part">
-            <div class="sentence-container">
-                <div class="sentence" data-paragraph="para1">PRODUCT INFO</div>
-                <div class="sentence" data-paragraph="para2">RETURN & REFUND POLICY </div>
-                <div class="sentence" data-paragraph="para3">SHIPPING INFO</div>
-            </div>
-            <div class="paragraph-container">
-                <p id="para1" class="hidden">This is the paragraph related to Sentence 1. This is the paragraph related to Sentence 1.This is the paragraph related to Sentence 1.This is the paragraph related to Sentence 1.</p>
-                <p id="para2" class="hidden">This is the paragraph related to Sentence 2.</p>
-                <p id="para3" class="hidden">This is the paragraph related to Sentence 3.</p>
-            </div>
-          </div>
-        </div>
-        <div class="right-content">
-          
+          </header>
            
+            <div class="cart-container">
+                <!-- Cart items will be dynamically added here by JS -->
+            </div>
+            <hr>
+            <button class="checkout-btn"> View cart</button>
         </div>
-    </div>
-        <!-- Modal for the checkout message -->
-<div class="modal-overlay" id="checkout-modal-overlay" style="display:none;">
-    <div class="modal-content">
-        <h2>We can't accept online orders right now</h2>
-        <p>Please contact us to complete your purchase.</p>
-        <button id="close-checkout-modal">Got it</button>
-    </div>
-</div>
-    <div id="cart-sidebar">
-        <div class="cart-title">
-            <button class="close-btn">&times;</button>
-            <h1>Cart</h1>
-        </div>
-       
-        <div class="cart-container">
-            <!-- Cart items will be dynamically added here by JS -->
-        </div>
-        <hr>
-        <button class="checkout-btn"> View cart</button>
-    </div>
+       </aside>
     
-    
-    <div id="footer-placeholder"></div>
+   <footer> <div id="footer-placeholder"></div></footer>
    <script src="../scripts/product-details.js"></script>
    <script src="../navbar.js"></script>
    <script src="../footer.js"></script>

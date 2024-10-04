@@ -147,4 +147,166 @@ function displayCart() {
 }
 
 
+  // Initialize the cart on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    displayCart(); // Load the cart with any existing items
+
+    // Attach event listeners to "Add to Cart" buttons (if any exist on the page)
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const name = this.dataset.name;
+            const imageSrc = this.dataset.imageSrc;
+            const price = parseFloat(this.dataset.price);
+
+            addToCart(name, imageSrc, price);
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+const promoParagraph = document.querySelector('.info p');
+
+promoParagraph.addEventListener('click', function() {
+let inputField = document.querySelector('.promo-input');
+let addButton = document.querySelector('.promo-button');
+
+if (!inputField) {
+    // If the input field doesn't exist, create and insert it
+    inputField = document.createElement('input');
+    inputField.type = 'text';
+    inputField.placeholder = 'Enter your promo code';
+    inputField.className = 'promo-input';
+
+    // Create the "Add" button
+    addButton = document.createElement('button');
+    addButton.textContent = 'Add';
+    addButton.className = 'promo-button';
+
+    // Create a container to hold both elements
+    const container = document.createElement('div');
+    container.className = 'promo-container';
+    container.appendChild(inputField);
+    container.appendChild(addButton);
+
+    // Insert the container after the paragraph
+    promoParagraph.insertAdjacentElement('afterend', container);
+} else {
+    // If the input field exists, remove both the input field and the button
+    inputField.parentNode.remove();
+}
+});
+});
+document.addEventListener('DOMContentLoaded', function() {
+const promoParagraph = document.querySelector('.info p:nth-of-type(2)');
+
+promoParagraph.addEventListener('click', function() {
+let inputField = document.querySelector('.note-input');
+
+if (!inputField) {
+    // If the input field doesn't exist, create and insert it
+    inputField = document.createElement('input');
+    inputField.type = 'text';
+    inputField.placeholder = 'Additional information.......';
+    inputField.className = 'note-input';
+
+    // Create a container to hold both elements
+    const container = document.createElement('div');
+    container.className = 'promo-container';
+    container.appendChild(inputField);
+
+    // Insert the container after the paragraph
+    promoParagraph.insertAdjacentElement('afterend', container);
+} else {
+    // If the input field exists, remove both the input field and the button
+    inputField.parentNode.remove();
+}
+});
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+const modalOverlay = document.getElementById('modal-overlay');
+const estimatedDeliveryLink = document.getElementById('estimated-delivery-link');
+const closeModalButton = document.getElementById('close-modal');
+const countryDropdown = document.getElementById('country-dropdown');
+const selectedCountryDisplay = document.getElementById('selected-country'); // Element to display the selected country
+
+// Function to open the modal
+function openModal() {
+modalOverlay.style.display = 'block';
+}
+
+// Function to close the modal
+function closeModal() {
+modalOverlay.style.display = 'none';
+}
+
+// Function to render the selected country
+function renderSelectedCountry() {
+const selectedValue = countryDropdown.value;
+if (selectedValue) {
+    selectedCountryDisplay.textContent = `Selected Country: ${countryDropdown.options[countryDropdown.selectedIndex].text}`;
+} else {
+    selectedCountryDisplay.textContent = 'No country selected.';
+}
+}
+
+// Add click event listener to the Estimated Delivery link
+estimatedDeliveryLink.addEventListener('click', function(event) {
+event.preventDefault(); // Prevent default link behavior
+openModal();
+});
+
+// Add click event listener to the Choose button
+closeModalButton.addEventListener('click', function() {
+renderSelectedCountry();
+closeModal();
+});
+
+// Close the modal if the overlay is clicked
+modalOverlay.addEventListener('click', function(event) {
+if (event.target === modalOverlay) {
+    closeModal();
+}
+});
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+const checkoutButton = document.getElementById('checkout-button');
+const checkoutModalOverlay = document.getElementById('checkout-modal-overlay');
+const closeCheckoutModalButton = document.getElementById('close-checkout-modal');
+
+// Function to open the modal
+function openCheckoutModal() {
+checkoutModalOverlay.style.display = 'flex'; // Show the modal
+}
+
+// Function to close the modal
+function closeCheckoutModal() {
+checkoutModalOverlay.style.display = 'none'; // Hide the modal
+}
+
+// Add click event listener to the checkout button
+checkoutButton.addEventListener('click', function() {
+openCheckoutModal();
+});
+
+// Add click event listener to the "Got it" button
+closeCheckoutModalButton.addEventListener('click', function() {
+closeCheckoutModal();
+});
+
+// Close the modal if the overlay is clicked
+checkoutModalOverlay.addEventListener('click', function(event) {
+if (event.target === checkoutModalOverlay) {
+    closeCheckoutModal();
+}
+});
+});
+
+
+
+
+
 
