@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const closeCartButton = document.querySelector('.close-btn');
-   
+    const cartButton = document.querySelector("cart_button");
     // Function to close the cart sidebar
     function closeCart() {
         const cartview = document.getElementById('cart-sidebar');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function addToCart(name, imageSrc, price) {
     // Get existing cart data from localStorage
     let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-
+    console.log(cart)
     // Check if the item already exists in the cart
     let existingItem = cart.find(item => item.name === name);
 
@@ -48,7 +48,7 @@ function displayCart() {
     let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
     let cartContainer = document.querySelector('.cart-container');
     let totalAmount = 0;
-
+   console.log(cart.length)
     if (cart.length > 0) {
         cartContainer.innerHTML = cart.map((item, index) => {
             // Calculate the total amount for each item based on quantity and price

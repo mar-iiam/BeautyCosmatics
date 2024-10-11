@@ -118,10 +118,9 @@ const updatePriceDisplay = (newPrice) => {
         const price = parseFloat(document.querySelector('input[name="options"]:checked').value);
         addToCart(name, imageSrc, price);
         
-
-
-
     });
+ 
+  
 };
 
 // Add event listeners to radio buttons to update the price when selected
@@ -239,3 +238,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+const totalItems = localStorage.length;
+console.log(totalItems)
+console.log(document.getElementById('itemCount'))

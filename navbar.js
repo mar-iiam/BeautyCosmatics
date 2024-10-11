@@ -49,3 +49,26 @@ function initializeNavLinks() {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Create the itemCount element
+    const itemCountElement = document.createElement('p');
+    itemCountElement.id = 'itemCount'; // Set the id for the element
+    
+    const cartLink = document.getElementById('navbar-placeholder'); // Get the cart link
+    
+    // Insert the itemCount element before "Cart" text
+    cartLink.insertBefore(itemCountElement, cartLink.firstChild);
+    
+    // Function to update the cart item count
+    function updateCartCount() {
+        const totalItems = localStorage.length; // Get the total number of items in localStorage
+        console.log(totalItems); // Log to console for debugging
+        itemCountElement.innerHTML = totalItems > 0 ? totalItems : ''; // Set the item count, only show if > 0
+    }
+
+    updateCartCount(); // Call the function to update the count when the page loads
+
+    // If you're dynamically adding items to localStorage elsewhere in your app, 
+    // call updateCartCount() again to update the displayed count.
+});

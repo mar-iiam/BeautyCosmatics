@@ -1,0 +1,47 @@
+/* Style for the div with the background image */
+.background-container {
+    margin-top: 20px;
+    background-image: url('https://static.wixstatic.com/media/e4f166_485b2452762a4cfcb87dd8bf7e6d9d9a~mv2.jpg/v1/fill/w_1903,h_812,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/e4f166_485b2452762a4cfcb87dd8bf7e6d9d9a~mv2.jpg'); /* Replace with your image URL */
+    background-size: cover; /* Ensures the image covers the entire div */
+    background-position: center; /* Centers the image */
+    width: 100%; /* Set the width */
+    height: 700px; /* Set the height as per your preference */
+    display: flex;
+    align-items: flex-start; /* Aligns items vertically to the top */
+    justify-content: flex-start; /* Aligns items horizontally to the left */
+   
+}
+
+/* Text container inside the div */
+.text-content {
+
+    color: white; /* Text color to make it stand out on the background */
+    font-family: 'Times New Roman', Times, serif; /* Font style */
+    color:black;
+    width: 600px;
+    position: relative;
+    left: 115px;
+    top: 140px;
+   
+}
+
+/* Heading style */
+.text-content h1 {
+    font-size: 60px;
+    margin: 0;
+}
+
+/* Paragraph style */
+.text-content p {
+    width: 300px;
+    font-size: 18px; /* Size of the second text */
+    margin: 5px 0 0; /* Adjust margin for spacing */
+}
+.text-content button{
+  margin-top: 20px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: black 2px solid;
+  width: 200px;
+}
